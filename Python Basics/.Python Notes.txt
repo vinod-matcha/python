@@ -1,1 +1,1901 @@
 
+PYTHON:
+********************************************
+number
+print
+string
+list
+list comprehension
+files
+range, xrange
+operators ==, >, <, <>, !=
+methods
+functions
+lambda
+if elif else
+scope
+loops for, while
+modules
+packages
+class
+map()
+reduce()
+filter()
+zip()
+enumerate()
+all() and any()
+complex(1+2i)
+decorators: assignment, returing function
+iterators
+generators
+generator expressions
+collections module: 
+-Counter()
+-defaultdict()
+-OrderedDict()
+-namedtuple() [simple class]
+datetime module
+debugger pdb
+%timeit
+regular expressions module: 
+-re.search()
+-re.match()
+-re.sub()
+-re.findall()
+Advanced sets
+Dictionary comprehensions
+
+********************************************
+Pending:
+1. Review Classes Program for Blackjack.
+2. Import a Package from GITHUB to Python using Conda and then pip.
+3. Create a package.
+4. https://benkurtovic.com/2015/01/28/python-object-replacement.html#disqus_thread
+
+All Material is located at below location:
+	http://nbviewer.jupyter.org/github/jmportilla/Complete-Python-Bootcamp/tree/master/
+
+Installation location: C:\Users\vmatcha\AppData\Local\Continuum\anaconda2\
+
+// Run python with in Anaconda prompt: Open Anaconda Prompt and type Python:
+C:\Users\vmatcha\AppData\Local\Continuum\anaconda2) C:\Users\vmatcha>python
+// to exit python and return to anaconda terminal type
+quit()
+// At this Anaconda Terminal Can run .py files at location C:\Users\vmatcha\
+C:\Users\vmatcha>python first_python_prog.py
+
+Generic Text Editors to Write Code: 	sublimetext, texteditor++, kamodo
+IDE-Integrated Developmet Environment for Python: WingWare, PYcharm
+
+Jupyter: Project Jupyter exists to develop open-source software, open-standards, and services for interactive computing across dozens of programming languages.
+To open Jupyter Notebook, at cmd prompt type:	jupyter notebook	
+ctrl-c 		//twice to exit
+Jupyter Notes Saved at:		http://localhost:8888/
+// Jupyter Notebooks are good for teching and learning Data Science for AdHoc Analysis. Also python and several other languages. But not for heavydury programming.
+
+--------------------------------------------------
+PYTHON 2.7			PYTHON 3.5
+print 				print()
+.iteritems()			.items()	--for dictionaties
+classic division		real division
+xrange()			range()		--generators
+raw_input()			input()
+
+
+Map, Reduce, and Filter functions use Iterators in Python3, uses List in Python2. Also in Python 3, reduce is imported from functools.
+--------------------------------------------------
+--------------------------------------------------
+1. Is it possible to generate variables dynamicaly based on a condition and assign instances of a class to it?
+#create class
+class Player(num, name):
+	....
+	
+#Trying to generate variables dynamically, depending on th enu of players
+	i=3
+	n='n'
+	while i > 0:
+	    m = n + str(i)
+	    print m
+	    m = Player(i, raw_input('Enter Player Name:'))
+	    print m, n1
+	    i -= 1
+	    
+expecting: n1=Person(1, 'ABC'), n2=Person(2, 'MNO'), n3=Person(3, 'XYZ')
+
+1. How long lenght\precision values\strings can be stored in List, Sequence, Dictionary key\value, Tuple
+2. How to use elif in if under List Comprehension
+3. How to delete the elements\tuples of below list, if any of the values with in the tuple match. 
+	issue: After deleting one, index s going out of range
+	l=[(1, 1, 1),
+	 (1, 1, 2),
+	 (1, 1, 3)]
+
+4. x=[(a,b,c) for a in xrange(1,10) for b in xrange(1,10) for c in xrange(1,10)]
+--------------------------------------------------
+
+1. Python has extreme reusability, if functoins etc created can be accessed across multiple projects, its reusability is extensively greater than Informatica.
+	In Informatica, if some thing needs to be reused, reusable objects need to be created, but if existing logic not reusable, need to create it again for new object as reusable. Else need to edit existig project mappings to be reusable. Reusability is built into Python.
+	- Its not easy to scroll down and see what all reusable objects are present and being alist in Informatica, to many objects list make it impossible to access.
+	
+2. It's important to remember that no framework is objectively better than all the others, and different use cases will require different frameworks. For instance, if you want to begin GUIs by designing a graphical game, your best bet would be PyGame! 	
+--------------------------------------------------
+Implement:
+1. clear output command, so that only new Board is displayed
+3. 
+
+
+LEARNINGS:
+***************************************************************************************************************************************
+Object Oriented Programming and Inheritance are similar to Data Modelling & (De\)Normalization:
+	- In both the concept is to hold logical grouping of data together and there can be relations across those groups.
+	- Inheritance, every instance takes the form of the base class, every record in Dimension table takes the form of the table record
+		If you were going to code a program for a bank, you could create an Object for user accounts. Each new user would be an object with its own information.
+	- LSP (Liskov Substitution Principle) is similar to Normalizing data to Snowflake???
+	
+API: Application programming interface
+	Just as a graphical user interface makes it easier for people to use programs, application programming interfaces make it easier for developers to use certain technologies in building applications
+	
+********************************8
+1. "return" can be run only with in a function, if run seperately it will fail. 
+	f below statements are run with out 'def' it will fail as [SyntaxError: 'return' outside function]
+	    def tic_tac_toe():
+	    if 1==2:
+	        return 'Bye Bye...'
+
+2. The size of a Dictionary cannot be changed during its own iteration (No additoins or deletions from dictionary when its being iterated).
+	If we try to change size during its own iteration, will get error: [RuntimeError: dictionary changed size during iteration]
+	
+	- Note that this problem is not fixed by iterating d.keys() instead of d, since in Python 3, d.keys() returns a dynamic view of the keys in the dict which results in the same problem. Instead, iterate over list(d). This will produce a list from the keys of the dictionary that will not change during iteration. Or you can also iterate over sorted(d) if a sorted order is important.
+	Or just use generator xrange(1,11) to iterate number of required times.
+	- Iterating an object and changing it at the same time was always considered unsafe and bad style
+
+2. Unable to remove all elements of a LIST, while iterating through the list:
+	l=[(1, 1, 1), (1, 1, 2), (1, 1, 3)]
+	# Below will successfully remove the items in list when the condition is satisfied
+	# See Difference in for loop using "list(l)"
+	for itm in list(l):
+	    if itm[0]==itm[1] or itm[1]==itm[2] or itm[2]==itm[0]:
+	        print 'equal', itm
+        	l.remove(itm)
+        
+       	# Below will leave last element in the LIST and not remove even if condition satisfying:
+       	# See Difference in for loop using "l"
+	for itm in l:
+	    if itm[0]==itm[1] or itm[1]==itm[2] or itm[2]==itm[0]:
+	        print 'equal', itm
+        	l.remove(itm)       	
+
+3. DO NOT define constants as chained, as their values will get overlapped. 
+	player = move_selected = move_completed = []
+	player.append('inside')
+	In above, if player is set ['inside']; move_selected and move_completed will also inherit the same value even if not assigned specifically.
+
+4. Permutations are for lists (order matters) and combinations are for groups (order doesn't matter). 
+	A joke: A "combination lock" should really be called a "permutation lock". The order you put the numbers in matters.
+	
+
+5. For Sorting Tuples data elements inside Llist, convert tuples to list, as data inside tuples cannnot be sorted.
+	a = [(8, 3, 5), (9, 4, 7)]
+	for i in a:
+	   lst = list(i)  #need to use "i" which represents the LIST data element inside the main LIST
+	   lst.sort()
+	   print lst
+
+6. Indefinite While Loop control: To keep on repeating for the set of block statements. 
+	Unless the set of block statements has some statement case where the value is changed.
+	 while repeat_game == 'Y':
+	 	play_yn = raw_input("Continue to Play? Y :")
+	 	if play_yn != 'Y':
+		     return 'Bye Bye...'
+        	else:
+        	     print 'Hi'  #Enter other code statements if needed.
+
+7. import random
+	if random.randint()==0:
+		print 'Hi'
+	Else :
+		print 'Bye'
+
+8. defining a class attribute :     a_card_tot = 0 was causing the value to remain a 0, even if the attribute is incremented.
+	Had to change th ename of the attribute to  acard_tot = 0, removing 1 underscore then the total was happening correctly.
+    def set_card_tot(self, card):
+        if card in ['J','Q','K','A']:
+            self.cardTotal += 10
+            if card == 'A':
+                self.acard_tot += 11
+        else:
+            self.card_tot += int(card) 
+
+9. In order to iterate through the instances of the objects created using CLASS:
+ 	- You can make your class object iterable with a simple metaclass.
+# add the metaclass IterRegistry
+class IterRegistry(type):
+    def __iter__(cls):
+        return iter(cls._registry)
+        
+# add the attribute "_registry" to the Person class below. "_registry" is returned based on the above metaclass function
+class Person(object):
+    __metaclass__ = IterRegistry
+    _registry = []
+
+    def __init__(self, name):
+        self._registry.append(self)
+        self.name = name
+
+
+## Also changed __registry to _registry to make it easier to access from the metaclass:
+>>> p = Person('Keela')
+>>> p2 = Person('Mary')
+>>> p2 = Person('maria')
+>>> for personobject in Person:
+...     print personobject
+...
+<person.Person object at 0x70410>
+<person.Person object at 0x70250>        	
+	- The variable p2 will hold name of last assignment, but there are already 3 Instances of Person Created and they are not overwritten.
+
+10. XOR: Exclusive OR (outputs True when inputs differ)
+
+11. Note: If you want to be able to read from a dictionary in a perticular sequence order, without using ordered dict collection.
+	Then assign the keys as incrementing numeric values. eg: dic {1:'a', 2:'vind', 3:'hello'}	
+	
+12. Handle the Edge Cases initially itself, it will make the remainig cases clear, especially in complex logics.
+	
+13. join function:
+	b = ['i', 'am', 'vinod', 'matcha']
+	" ".join(i for i in b)
+	OR
+	" ".join(b)
+
+14. To Build Efficient Code:
+	0. Dont code directly, first write down approach on the paper or white board, which are more difficult, and will give you clearer understanding.
+	1. Try to write the code using Python Hints, Functions. We can show we know Python. 
+		- Then try to build own Algorithm functions to replace the Python functions.
+	a. Ensure Edge cases are handled.
+		- Handle them at begining, if possible. Else, at end or with in program.
+	b. Try to Code in Constant or less than or equal to linear Time.
+	b. Try to Brute Force the method using nested loops, if no idea on how to code in constant or  less than linear time.
+
+
+15. Write pythonic code:
+  Don't Write This:
+	my_container = ['Larry', 'Moe', 'Curly']
+	index = 0
+	for element in my_container:
+	    print ('{} {}'.format(index, element))
+	    index += 1
+  Write This:
+	my_container = ['Larry', 'Moe', 'Curly']
+	for index, element in enumerate(my_container):
+	    print ('{} {}'.format(index, element))    
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Various Import resources:
+***************************
+
+1. import itertools
+	x=itertools.combinations('abc',3)
+	y=itertools.permutations('abc',3)
+	list(x)
+	list(y)
+
+2. import time 
+    while True:
+    print("This prints once 6 sec.")
+    time.sleep(6) 
+
+3. import collections
+	ordereddic()
+	defaultdic()
+	counter()
+	namedtuple()
+	
+4. Import random
+	randint()
+
+5. import datetime
+	datetime.date.today()
+
+6. import pdb
+	Very powerful python debugger module
+
+7. import timeit
+
+8. import re
+
+9. from __future__ import print_function
+	end=" "
+
+10. from ipywidgets import interact, interactive, fixed
+	import ipywidgets as widgets
+	from ipywidgets import * #to import everything
+
+11. from IPython.utils.py3compat import annotate
+
+12. from IPython.display import display
+
+12. import traitlets
+
+14. from nose.tools import assert_equal
+
+15. import sys 
+	#allows to use the getsize of the function to get the actual size in Bytes the computer is holding in momory.
+	l=[]
+	sys.getsizeof(l)
+	print 'length: {0:3d}; size in bytes: {1:4d}'.format(a,b)
+
+16. import ctypes
+--------------------------------------------------
+
+1. It's considered best practice (PEP8) that the names of variables are lowercase.
+
+2. Numbers : 1,2,-5,1000 are Integers
+   Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. 
+	No matter how many digits you’re willing to write down, the result will never be exactly 1/3, but will be an increasingly better approximation of 1/3.
+	- 1.2,-0.5,2e2,3E2	Floating-point numbers
+	
+3. STRINGS in Python are actually a sequence, which basically means Python keeps track of every element in the string as a sequence. 
+	For example, Python understands the string "hello' to be a sequence of letters in a specific order. So we can use indexing to grab particular letters.
+	a='vinod matcha', a[0], a[:1], a[3:], a[1:4], a[2l3], a[-3], a[::-2], a + 'hello', a*3
+   - Strings have a property known as immutability. This means that once a string is created, the elements within it can not be changed or replaced.
+   - S.split([sep [,maxsplit]]) -> list of strings
+	Return a list of the words in the string S, using sep as the delimiter string.  If maxsplit is given, at most maxsplit splits are done. 
+	If sep is not specified or is None, any whitespace string is a separator and empty strings are removed from the result.
+	Type:      builtin_function_or_method
+   - For .functions(), use SHIFT+TAB to display the notes of its use case. x.split"[shift+tab"
+   - 'Hello'.upper().startswith('H')   	#will convert string to UPPER, and check if first char of string starts with H and returns boolean.
+   ex: st = 'Print only the words that start with s in this sentence'
+	lst=st.split(' ')
+	i=0
+	for word in lst:
+	    if word[0]=='s': #can also use lst[i][0]
+		print word
+		i+=1
+	    else:
+		i+=1   
+	********
+	SLICING : a[3:]
+	STEP SIZE :Pick elements in steps [::2]
+	IMMUTABILITY : once a string is created, the elements within it can not be changed or replaced.
+	CONCATENATION: s+s, 'str'*2
+	METHODS :  split(), lower()
+	FUNCTIONS: len(string), sorted(string)
+	
+	
+   - # Last letter (one index behind 0 so it loops back around)
+	s[-1]
+	
+	
+	
+4. Objects in Python usually have built-in methods. These methods are functions inside the object that can perform actions or commands on the object itself.
+	Methods are in the form: object.method(parameters)
+	a.lower(), a.partition('a'), a.format(), a.find('t'), a.index('a') 
+
+5. PRINT FORMATTING:
+	- Strings - You can use the %s to format strings into your print statements: print '%s' %(s)
+	- Floating point - they use the format %n1.n2f where the n1 is the total minimum number of digits the string should contain (these may be filled with whitespace if the entire number does not have this many digits. The n2 placeholder stands for how many numbers to show past the decimal point.
+	> print '%1.3f' %(3.115667)
+	
+	print 'No. of Upper case characters : %s of total %d' %(cnt_u, le)
+	print "Title:%s , author:%s, pages:%s " %(1,2,3)
+	
+6. Conversion Format methods: two methods %s and %r actually convert any python object to a string using two separate methods: str() and repr().
+	print 'First: %s, Second: %1.2f, Third: %r' %('hi!',3.14,22)
+	
+7. .FORMAT() METHOD: The best way to format objects into your strings for print statements is using the format method. 
+	print 'Object 1: {a}, Object 2: {b}, Object 3: {c}'.format(a=1,b='two',c=12.3)
+	Giving placeholders explicit positional Index, index 1 is assigned two, and index 0 is assigned one: 	'{1} {0}'.format('one', 'two')  output: two one
+	
+8. LISTS: Can be thought of the most general version of a sequence in Python.
+	- Unlike strings they are mutable, meaning the elements inside a list can be changed!
+	- lists can actually hold different object types
+	- my_list = ['A string',23,100.232,'o']
+	1.) Creating lists
+		txt = 'hello'
+		z = list(txt)
+		z
+		['h', 'e', 'l', 'l', 'o']\
+
+	> l = range(10)
+	 Generates List with elements 0 to 9.
+	
+	2.) Indexing and Slicing Lists:
+		l[::-1] : Will reverse the list
+		l[-1:] : will return only the last element in the list
+	3.) Basic List Methods: l = [1,2,3] , l.pop(2), l.append('hello'), .sort(), .reverse()
+		Append method to permanently add an item to the end of a list.
+		Pop: Pop off an item from the list. By default pop takes off the last index, but you can also specify which index to pop off
+		l.pop(0), popped_item = l.pop() , default popped index is l.pop(-1)
+	4.) Nesting Lists : This means we can have data structures within data structures
+		a=[[4,5],[2,3]], a[1][1] is 3
+	5.) Introduction to List Comprehensions: They allow for quick construction of lists. To fully understand list comprehensions we need to understand for loops
+
+	- Python List Methods:
+	append() - Add an element to the end of the list
+	extend() - Add all elements of a list to the another list
+	insert() - Insert an item at the defined index
+	remove() - Removes an item from the list
+	pop() - Removes and returns an element at the given index
+	clear() - Removes all items from the list
+	index() - Returns the index of the first matched item
+	count() - Returns the count of number of items passed as an argument
+	sort() - Sort items in a list in ascending order
+	reverse() - Reverse the order of items in the list
+	copy() - Returns a shallow copy of the list
+	
+	- Remove() and Pop() will remove element from List, but Only Pop() returns the element removeed which can be later assigned to others if needed.
+	
+9. DICTIONARIES: In python are Mappings. 
+	- A Python dictionary consists of a key and then an associated value. That value can be almost any Python object.
+	- Mappings are a collection of objects that are stored by a key, unlike a sequence that stored objects by their relative position. 
+	This is an important distinction, since mappings won't retain order since they have objects defined by a key.
+	- We cannot Sort a Normal Dictionary which is a Mapping.
+	- Think of these Dictionaries as hash tables.
+	1.) Constructing a Dictionary
+	2.) Accessing objects from a dictionary
+		>>> myitems = mydict.items()
+		>>> type(myitems)
+		dict_items
+		>>> mylist = list(myitems)
+		>>> type(mylist)
+		list
+	3.) Nesting Dictionaries:
+		- Its important to note that dictionaries are very flexible in the data types they can hold. 
+		d={'key1':1, 'key2':l[1], 'key3':[1,2,[3,4]], 'key4':'Joker'}, d['key3'][2]
+	4.) Basic Dictionary Methods
+		d={'key1':1, 'key2':9, 'key3':l[1]}, d.keys(), d.values(), d.items()
+
+	mydict.clear       mydict.get         mydict.pop         mydict.update
+	mydict.copy        mydict.items       mydict.popitem     mydict.values
+	mydict.fromkeys    mydict.keys        mydict.setdefault 
+
+10. TUPLES:
+	In Python tuples are very similar to lists, however, unlike lists they are immutable meaning they cannot be changed. You would use tuples to present things that shouldn't be changed, such as days of the week, or dates on a calendar.
+	- Because of this immutability, tuples can't grow. Once a tuple is made we can not add to it.
+	1.) Constructing Tuples : t=(1, 2, 3)	, t=(1,2,(3,4)) nesting
+	2.) Basic Tuple Methods
+	3.) Immutability
+	4.) When to Use Tuples.
+	methods:
+	index() and count()
+	- Tuple Unpacking:
+		def wrapper(thelist):
+		    for item in thelist:
+			yield(item[0], item[1], item[2], item[::-1])
+
+		mylist = [(1,2,3,4), (5,6,7,8)]
+		for a, b, c, d in wrapper(mylist):
+		print a, b, c, d	# this prints below output, unpacked tuples as requested in function
+		1 2 3 (4, 3, 2, 1)
+		5 6 7 (8, 7, 6, 5)
+	
+11. FILES:
+	Python uses file objects to interact with external files on your computer. These file objects can be any sort of file you have on your computer, whether it be an audio file, a text file, emails, Excel documents, etc. Note: You will probably need to install certain libraries or modules to interact with those various file types, but they are easily available
+	- Python has a built-in open function that allows us to open and play with basic file types
+	- iPython Write File: in Jupyter Notebooks
+		- %%writefile test.txt
+		  Hello, this is a quick test file
+	- We can open a file with the open() function. 
+		myfile=open('text.txt')
+		myfile.read()
+	- When using .readlines() on the file, the whole text file will be stored in memory. Be careful with large files.
+	- Writing to the existing File:
+		using the open() function will only allow us to read the file, we need to pass the argument 'w' to write over the file
+		my_file = open('test.txt','w+')
+		my_file.write('This is a new line')
+		my_file.read()
+	- Loop through the file:
+		%%writefile 'text.txt'
+			First Line
+			Second Line
+			third line
+	- For loop:
+		for abc in open('text.txt'):
+		 print abc.replace('i','u')  #need to have indent before print, see : in above line syntax
+		 
+12. SET:
+	Sets are an unordered collection of unique elements. We can construct them by using the set() function.
+	We can cast a list with multiple repeat elements to a set to get the unique elements.
+	- Set output is in flower brackets and data is also sorted by default.
+	- Will NOT SORT the list, even though some times it appears to sort by default.
+	m=set('vinod matcha') #input argument cannot be number, should be iterable strings or lists
+	m
+	{' ', 'a', 'c', 'd', 'h', 'i', 'm', 'n', 'o', 't', 'v'}
+	
+	# Dictionary to Set and List conversion. List to Set conversion.
+	d={'k1':'v1','k2':'v2'}
+	l=set(d.items())	# Set of tuples is created with dictionary items
+	lst=list(l)		# set is converted to list of tuples
+	k=set(lst)
+	
+# Cannot Convert LIST to Tuple. 
+# Can convert simple LIST to SET, cannot convert nested list to SET:	
+		l=set([1,2,3,4])	#Valid
+		m=set([[1,2],[3,5]])	#IN-Valid
+# Note:
+	Can add TUPLEs in a SET, but cannot add LISTs in a SET
+	s={[1,2],[3,1]}	#IN-VALID
+	TypeError: unhashable type: 'list'
+
+	s={(1,2),(3,1)}	#VALID
+	{(1, 2), (3, 1)}
+	
+	l
+	{('k1', 'v1'), ('k2', 'v2')} # difference in outermost brackets {}
+	lst
+	[('k2', 'v2'), ('k1', 'v1')] # difference in outermost brackets []
+	k
+	{('k1', 'v1'), ('k2', 'v2')}
+	
+	l=(1,2,3) # creates Tuple
+	k=(1,4,2)
+	sl=set(l) # creates SET
+	kl=set(k)
+	
+	
+13. BOOLEANS:
+	Python comes with Booleans (with predefined "True" and "False" displays that are basically just the integers 1 and 0). 
+	It also has a placeholder object called "None".	
+
+14. COMPARISION Operators:
+	These operators will allow us to compare variables and output a Boolean value (True or False). 1>2, 1<>3
+
+15. CHAINED COMPARISON Operators:
+	Ability to chain multiple comparisons to perform a more complex test. You can use these chained comparisons as a shorthand for larger Boolean Expressions.
+	1<2<3, 1<2 and 2<3
+	1==2 or 2<3
+
+15. PYTHON Statements:
+	Readability is the core of Python language.
+
+16. IF,ELIF,ELSE Statements:
+	- if Statements in Python allows us to tell the computer to perform alternative actions based on a certain set of results.
+	
+	- Indentation: It is important to keep a good understanding of how indentation works in Python to maintain the structure and order of your code
+	d={'INNA':'Good', 'Otilia':'Better', 'Penna':'Best'}
+	v_name='Heroine'
+	v_desc='Beautiful'
+	#Set v_pop to 'Y' to remove from service
+	v_pop='N'
+	# Update desc if different entered, else Print, delete if Pop
+	if d.has_key(v_name):
+	    if v_pop=='N' and v_desc!=d[v_name]:
+	        d[v_name]=v_desc
+	        print 'In service and updated: {a}, {b}' .format(a=v_name,b=v_desc)
+	    elif v_pop=='Y':
+	        print 'Popped from service: {a}, {b}' .format(a=v_name,b=v_desc)
+	        del d[v_name]
+	    else:
+	         print 'In service: {a}, {b}' .format(a=v_name,b=v_desc)
+	else:  # Insert if contestant not exists
+	    d[v_name]=v_desc    
+	    print 'Welcome to service: {a}, {b}' .format(a=v_name,b=v_desc)
+    
+    - Conditional Expressions in Python return values.  a==a # will return "true"
+
+	- eg: format of not in range using if for variable k
+	if not 0 <= k <n:
+            return IndexError('K is out of bounds!') 
+
+17. FOR LOOPS:
+	A for loop acts as an iterator in Python, it goes through items that are in a sequence or any other iterable item. 
+	Objects that we can iterate over include strings,lists,tuples and even built in iterables for dictionaries, such as the keys or values.
+	- Modulo:
+		The modulo allows us to get the remainder in a division and uses the % symbol. For example: 5%2=1, 17%5=2
+		# Start sum at zero
+		list_sum = 0 
+		for num in l:
+		    list_sum += num  #Or use list_sum = list_sum + num
+	- print list_sum
+	- TUPLES have a special quality when it comes to for loops. If you are iterating through a sequence that contains tuples, the item can actually be the tuple itself, this is an example of tuple unpacking. During the for loop we will be unpacking the tuple inside of a sequence and we can access the individual items inside that tuple!
+		l=[1,2,2,3,4]
+		ll=[(9,8),[7,6]]
+		s='Sunny Leone'
+		cnt=0
+		for i in l:
+		    if i%2==0:
+		        print 'even number', i
+		    else:
+		        print 'odd number', i
+		        cnt += i
+		print cnt
+		for j in s:
+		    print j*5
+		for (a,b) in ll:
+		    print a
+	
+	- Iterating through a dictionary and printing both key and value.
+		-In Python 2 you should use .iteritems() or .items() to iterate through the keys and values of a dictionary. in Python3 use .items()
+		-This basically creates a generator that will generate the keys and values of your dictionary. 
+18. GENERATORS:
+		The basic notion is that GENERATORS don't store data in memory, but instead just yield it to you as it goes through an iterable item)
+		A generator allows the generation of generated objects that are provided at that instance but does not store every instance generated into memory.
+		This means a generator would not create a list to generate like range() does, but instead provide a one time generation of the numbers in that range. Python 2 has a built-in range generator called xrange(). It is recommended to use xrange() for for loops in Python 2.
+		
+	  d={'INNA':'Good', 'Otilia':'Better', 'Penna':'Best'}
+		for i in d:
+		    print i, d[i]
+		for a,b in d.items(): #uses tuples in python2, consuming memory. But in Python3 uses iterators
+		    print a, b
+		for a,b in d.iteritems(): #uses iterator in python2, does not exist in python3
+		    print a, b
+
+18. WHILE LOOPS:
+	A while statement will repeatedly execute a single statement or group of statements as long as the condition is true. 
+	The reason it is called a 'loop' is because the code statements are looped through over and over again until the condition is no longer met.
+	The while statement in Python is one of most general ways to perform iteration. 
+	i=6
+	while i>3:
+	    print ('hello %i') %i
+	    i-=1
+
+	- General format of the while loop :
+	while test: 
+	    code statement 
+	    if test: 
+		break
+	    if test: 
+		continue 
+	else:
+	
+19. BREAK, CONTINUE, PASS :
+	We can use break, continue, and pass statements in our loops to add additional functionality for various cases. The three statements are defined by:
+
+	BREAK: Breaks out of the current closest enclosing loop.
+	CONTINUE: Goes to the top of the closest enclosing loop.
+	PASS: Does nothing at all.
+	i=6
+	while i>3:
+	    print ('hello %i') %i
+	    i-=1
+	    print i, 11111
+	    if i==4:
+		print '1st if', i
+		break # breaks from current while loop and goes into else part
+		print i*5
+	    if i==5:
+		print '2nd if', i
+		continue # continues to top of closest loop (while loop)
+		print i
+		i+=1
+		print i
+		break
+	print 'while else part', i        
+        	
+20. RANGE() function:
+	range() allows us to create a list of numbers ranging from a starting point up to an ending point.
+	start=4
+	stop=8
+	step=2
+	y=range(start,stop)
+	x=range(start, stop, step) #x will hold list with elements from 'start' to 'stop'-1, incremented in 'step'
+	print y
+	print x
+  sol:	[4, 5, 6, 7]
+	[4, 6]
+
+	- xrange() generates elements but does not save them like range() which saves as list.
+	eg: 	x=xrange(1,7)
+		list(x)
+		[1, 2, 3, 4, 5, 6]
+
+21. LIST COMPREHENSIONS:
+	List comprehensions allow us to build out lists using a different notation. You can think of it as essentially a one line for loop built inside of brackets.
+	 comp=[x for x in 'apple']
+	Nested lists:
+		c_lst=[(x**2,y,z) for x in xrange(0,7) for y in xrange(1,4) for z in ['a','b']]
+	Conditions:
+		c_even=[x for x in xrange(0,13) if x%2==0]
+		print c_even
+	complex arithmatic: 
+		c_celsius_farenheit=[ (x, (float(9)/5)*x+32) for x in xrange(-20,20)]
+		
+	Generate Calendar for 2017, 2018:
+	Using TUPLE, IF, XRANGE, FOR, LIST COMPREHENSION
+		cal_1=[(year, month, day) for month in xrange(1,13) for day in xrange(1,32) if month in (1,3,5,7,8,10,12) for year in xrange(2017, 2019)]
+		cal_2=[(year, month, day) for month in xrange(1,13) for day in xrange(1,31) if month in (4,6,9,11) for year in xrange(2017, 2019)]
+		cal_3=[(year, month, day) for month in xrange(1,13) for day in xrange(1,30) if month==2 for year in xrange(2017, 2018)]
+		
+		cal_year=cal_1+cal_2+cal_3
+		cal_year.sort()
+		cal_year
+
+22. Methods:
+	Methods are essentially functions built into objects.
+	Methods will perform specific actions on the object and can also take arguments, just like a function.
+	we can think of methods as having an argument 'self' referring to the object itself.
+	object.method(arg1,arg2,etc...)
+	eg:
+	- List l=[1,2,3,45], had various methods append(),count(),extend(),insert(),pop(),remove(),reverse(),sort()
+	- You can always use Shift+Tab in the Jupyter Notebook to get more help about the method. 
+	- In general Python you can use the help() function: 
+		help(l.count)
+		count(...)
+		L.count(value) -> integer -- return number of occurrences of value
+		
+23. Functions:
+	Functions will be one of our main building blocks when we construct larger and larger amounts of code to solve problems.
+	- A function is a useful device that groups together a set of statements so they can be run more than once. They can also let us specify parameters that can serve as inputs to the functions.
+	- On a more fundamental level, functions allow us to not have to repeatedly write the same code again and again.
+	- Use a function len() to get the length of a string. Since checking the length of a sequence is a common task you would want to write a function that can do this repeatedly at command. 
+	- Functions will be one of most basic levels of reusing code in Python
+	- Python Built-in Functions: https://docs.python.org/2/library/functions.html
+	- Built-in Functions		
+	abs()		divmod()	input()		open()		staticmethod()
+	all()		enumerate()	int()		ord()		str()
+	any()		eval()		isinstance()	pow()		sum()
+	basestring()	execfile()	issubclass()	print()		super()
+	bin()		file()		iter()		property()	tuple()
+	bool()		filter()	len()		range()		type()
+	bytearray()	float()		list()		raw_input()	unichr()
+	callable()	format()	locals()	reduce()	unicode()
+	chr()		frozenset()	long()		reload()	vars()
+	classmethod()	getattr()	map()		repr()		xrange()
+	cmp()		globals()	max()		reversed()	zip()
+	compile()	hasattr()	memoryview()	round()		__import__()
+	complex()	hash()		min()		set()	
+	delattr()	help()		next()		setattr()	
+	dict()		hex()		object()	slice()	
+	dir()		id()		oct()		sorted()	
+	
+	Ex:
+		def add_num(num1,num2):
+		    return num1+num2
+		result = add_num(4,5)
+		Print result	# returns 9
+		print add_num('one','two') #strings given as arguments, result is "onetwo"
+	# Because we don't declare variable types in Python, this function could be used to add numbers or sequences together.
+	import math
+	def is_prime(num):
+	    '''
+	    Better method of checking for primes.  ## This is a doc string to give comments, which can be accessed by using SHIFT+TAB
+	    '''
+	    if (num % 2 == 0 or num % 3 ==0) and num > 3: 
+	        return False
+	    for i in range(4, int(math.sqrt(num)) + 1, 2):
+	        if num % i == 0:
+	            return False
+   	    return True
+	- RETURN allows a function to return a result that can then be stored as a variable, or used in whatever manner a user wants.
+
+24. Lambda Expressions:
+	- lambda expressions allow us to create "anonymous" functions. 
+		This basically means we can quickly make ad-hoc functions without needing to properly define a function using def.
+			* Lambda is a tool for building callback handlers.
+	- lambda's body is a single expression, not a block of statements.
+	- That means that Python has two tools for building functions: def and lambda. 
+	- lambda is designed for coding simple functions, and def handles the larger tasks.
+	- lambda expressions really shine when used in conjunction with map(),filter() and reduce()
+	- Since a for loop is a statement (as is print , in Python 2.x), you cannot include it in a lambda expression.
+	
+	def square(num):
+	    result = num**2
+	    return result
+	- Can be written as:
+	ex:
+	square = lambda num: num**2	#returns squared value output 
+	even = lambda num: num%2 == 0 and num>5	# Returns True or False when condition satisfies
+	max_f = lambda a, b: a if a>b else b # returns appropriate value based on condition: max_f()
+	adder = lambda x,y : x+y
+
+25. Nested Statements and Scope:
+	When you create a variable name in Python the name is stored in a name-space. Variable names also have a scope, the scope determines the visibility of that variable name to other parts of your code
+   *LEGB Rule:
+	L: Local — Names assigned in any way within a function (def or lambda)), and not declared global in that function.
+	E: Enclosing function locals — Name in the local scope of any and all enclosing functions (def or lambda), from inner to outer.
+	G: Global (module) — Names assigned at the top-level of a module file, or declared global in a def within the file.
+		- The global statement: Used to assign a value to a variable defined outside a function.
+		x = 50 # this is a global variable
+		def func():
+		    global x  # here 'x' is not an argument in function, so has to be decalred as global, to use the value defined out side function.
+		    print 'This function is now using the global x!'
+		    x=2 # this assignment happens even for the Global X outside the function, as its referred as Global in the function
+		
+		x = 50 # this is a global variable
+		def func(x):  # here 'x' is an argument to function, so uses the value defined outside function.
+		    print 'x is', x
+		    x=2 # this assignment remains with in the function and not for global variable 
+	B: Built-in (Python) — Names preassigned in the built-in names module : open,range,SyntaxError,...
+	- you can use the globals() and locals() functions to check what are your current local and global variables.
+	- These are the built-in function names in Python (don't overwrite these!)
+		eg: len()
+		
+26. RAW_INPUT() and INPUT() : Prompt functions in PYTHON
+	- raw_input() is used to read text (strings) from the user. name = raw_input("What is your name? ")
+	- input() is used to read integers. name1 = input("What is your name?")
+		Or give strings in Quotes
+
+
+27. Object Oriented Programming: 
+------------------------------------------------
+Classes are a modeling technique; a way of thinking about programs. When you think about and implement your system in this way, you're said to be performing Object-Oriented Programming.
+
+Kind of modelling technique, where related attributes can be grouped together to form an object, there can also be relations across the objects created.
+
+**IMP**:
+https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
+
+Objects: In Python, everything is an object.
+	print type(1)	#int
+	print type([])	#list
+	print type(())	#tuple
+	print type({})	#dict
+
+Class:	Simply a logical grouping of data and functions.
+	- Rather than just throwing random things together under the name "class", we try to create classes where there is a logical connection between things. Many times, classes are based on objects in the real world (like Customer or Product). Other times, classes are based on concepts in our system, like HTTPRequest or Owner, (or Stack, Queue, Tree @vinod).
+	- classes are a modeling technique; a way of thinking about programs. When you think about and implement your system in this way, you're said to be performing Object-Oriented Programming. "Classes" and "objects" are words that are often used interchangeably, but they're not really the same thing. Understanding what makes them different is the key to understanding what they are and how they work
+	- SELF is the instance of the Customer that withdraw is being called on. 
+		jeff.withdraw(100.0) is just shorthand for Customer.withdraw(jeff, 100.0), which is perfectly valid (if not often seen) code
+	-> class Customer(object):
+
+class Customer(object):
+    """A customer of ABC Bank with a checking account. Customers have the
+    following properties:
+
+    Attributes:
+        name: A string representing the customer's name.
+        balance: A float tracking the current balance of the customer's account.
+    """
+
+    def __init__(self, name, balance=0.0):	#This also works:	def __init__(Customer, name, balance=0.0):
+        """Return a Customer object whose name is *name* and starting
+        balance is *balance*."""
+        self.name = name		#SELF is the instance of the Customer
+        self.balance = balance
+
+    def withdraw(self, amount):
+        """Return the balance remaining after withdrawing *amount*
+        dollars."""
+        if amount > self.balance:
+            raise RuntimeError('Amount greater than available balance.')
+        self.balance -= amount
+        return self.balance
+
+    def deposit(self, amount):
+        """Return the balance remaining after depositing *amount*
+        dollars."""
+        self.balance += amount
+        return self.balance
+      
+      
+      
+      * After __init__ has finished, the caller can rightly assume that the object is ready to use. That is, after jeff = Customer('Jeff Knupp', 1000.0), we can start making deposit and withdraw calls on jeff; jeff is a FULLY-INITIALIZED OBJECT.
+      
+      * The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized. There are exceptions, of course, but it's a good principle to keep in mind. This is part of a larger concept of object consistency: there shouldn't be any series of method calls that can result in the object entering a state that doesn't make sense.
+      
+      * Invariants (like, "balance should always be a non-negative number") should hold both when a method is entered and when it is exited. It should be impossible for an object to get into an invalid state just by calling its methods. It goes without saying, then, that an object should start in a valid state as well, which is why it's important to initialize everything in the __init__ method.
+      
+
+	The class is a blueprint that defines a nature of a future object. From classes we can construct instances. 
+	- An instance is a specific object created from a particular class. 
+	  For example, below we created the object 'l' which is an instance of a list object.
+		l = [1,2,3]
+	- By convention we give classes a name that starts with a capital letter. We can define class attributes and methods inside Class.
+	- An attribute is a characteristic of an object. A method is an operation we can perform with the object.
+	
+	class Customer(object):
+	def __init__(self, name, balance=0.0):
+	        """Return a Customer object whose name is *name* and starting
+	        balance is *balance*."""
+	        self.name = name
+	        self.balance = balance
+	
+	def withdraw(self, amount):
+	        """Return the balance remaining after withdrawing *amount*
+	        dollars."""
+	        if amount > self.balance:
+	            raise RuntimeError('Amount greater than available balance.')
+	        self.balance -= amount
+        return self.balance
+	
+   * Attributes:
+	  The syntax for creating an attribute is:	  self.attribute = something
+	  There is a special method as below which is used to initialize the attributes of an object.
+		class Dog(object):
+		    # Class Object Attribute
+		    species = 'mammal'
+		    def __init__(self,breed,name):
+			self.breed = breed
+			self.name = name
+
+		sam = Dog(breed='Lab')
+		frank = Dog(breed='Huskie')	
+ 	  Note how we don't have any parenthesis after breed, this is because it is an attribute and doesn't take any arguments.
+	  sam.breed
+   
+   * Class object attributes: These Class Object Attributes are the same for any instance of the class.
+   	  - Class Object Attribute is defined outside of any methods in the class. Also by convention, we place them first before the init.
+   	  
+   
+   * Methods : Functions when defined with in a Class are called Methods. 
+   	- They are used to perform operations with the attributes of our objects. 
+   	- Methods are essential in encapsulation concept of the OOP paradigm. This is essential in dividing responsibilities in programming, especially in large applications.
+
+	- You can basically think of methods as functions acting on an Object that take the Object itself into account through its self argument.
+	  
+   * INHERITANCE:	__init__() methods are not inherited
+	- While Object-oriented Programming is useful as a modeling tool, it truly gains power when the concept of inheritance is introduced. 
+	Inherticance is the process by which a "child" class derives the data and behavior of a "parent" class. (Similar to custom views created from base Tables)
+   	- Inheritance is a way to form new classes using classes that have already been defined.
+	The newly formed classes are called derived classes, the classes that we derive from are called base classes. 
+	- Important benefits of inheritance are code reuse and reduction of complexity of a program. 
+
+	The derived class INHERITS the functionality of the base class.
+	The derived class MODIFIES existing behavior of the base class.
+	The derived class EXTENDS the functionality of the base class.
+
+	- When you access an object property, the interpreter looks for it in the object class. 
+	If it's not there, the interpreter proceeds all the way up the class inheritance chain until the first occurence is found.
+	
+	You can call the original property from an overriding class like this:
+	
+	class SpecialExecutiveAccount( ExecutiveAccount ):
+	    def requestCredit(self, amount):
+	        self.balance = ExecutiveAccount.requestCredit(self, amount)
+        return
+	- You can use isinstance() to check if an object is an instance or subinstance of a class.
+	You can use issubclass() to check if one class derives from another.
+		isinstance(sam, Dog)	#where Dog is a class, and sam is an instance object created from Dog
+		issubclass(Dogsub, Dog) #where Dogsub is a class  created from class Dog.
+
+		class Dog(object):
+		    def __init__(self, breed):
+		        self.breed = breed
+		sam = Dog(breed = 'unknown')
+
+		class Dogsub(Dog):
+		    pass
+		
+		frot = Dogsub(breed= 'frot')
+	
+	- MULTIPLE INHERITANCE
+	There is support for inherting from multiple classes:
+	class CustomizedClass( ExecutiveAccount, EnterpriseAccount, InternationalAccount ):
+	    # . . .
+	If the interpreter doesn't find a requested attribute in the class, the interpreter proceeds left to right, in Executive and then in Enterprise and so on.
+
+   * Special Methods:
+   	Classes in Python can implement certain operations with special method names. 
+   	These methods are not actually called directly but by Python specific language syntax.
+   		__iter__, 
+   		__init__(), 
+   		__str__(), 
+   		__len__() and the 
+   		__del__() methods.
+	These special methods are defined by their use of underscores. They allow us to use Python specific functions on objects created through our class.
+
+*** Think of your class definition as a mold used in manufacturing. As long as the definition exists (in memory) you can create instances of the class. As soon as you delete the class definition, you have broken (and thrown out) the mold, so you have nothing to build more instances with.
+
+When you instantiate a class by assigning a variable to a class object, as with fred = MyObject() , two things happen. First, Python creates the object with all its attributes and stores it in memory. Next, Python creates the name "fred", stores it in a namespace, and creates a pointer that links the name "fred" to the object.
+
+If you delete "fred", as with del fred , two things happen. First, Python removes the name "fred" from the namespace, and the pointer between "fred" and the object. Next, Python checks to see if there are any other references to the object (other names that point to it, positions in a list, etc.). If no other references to the object exist, then Python removes the object. This is known as garbage collection.
+
+Hope this helps!
+
+#Creating Private methods in class using '_'
+	class M(object):
+	    def public(self):
+	        print'this is a public method'
+	    def _private(self):
+        print 'this is a private method'
+        
+
+28. Errors and Exception Handling:
+	TRY and EXCEPT: The basic terminology and syntax used to handle errors in Python is the try and except statements. The code which can cause an exception to occue is put in the try block and the handling of the exception is the implemented in the except block of code
+	
+	try:
+	    f = open('testfile','w')
+	    f.write('Test write this')
+	except IOError:
+	   print "Error: Could not find file or read data"
+	else:
+	   print "Content written successfully"
+	   f.close()
+	   
+29. Modules: 
+	Modules in Python are simply Python files with the .py extension, which implement a set of functions. 
+	Modules are imported from other modules using the import command.
+	
+	# import the library
+	import math
+	math.sqrt(4)
+	
+	- Good Practice: Best to import only the required function if only few are used in program:
+	from math import sqrt
+
+	- We can look for which functions are implemented in each module by using the dir function:
+		print(dir(math))
+	- We can read about it more using the help function, inside the Python interprete
+		help(math.ceil)
+	- You can import modules and packages from online python site or also from GITHUB
+
+  - Writing modules:
+	Writing Python modules is very simple. To create a module of your own, simply create a new .py file with the module name, and then import it using the Python file name (without the .py extension) using the import command.
+	
+30. Packages:
+	- Packages are name-spaces which contain multiple packages and modules themselves. They are simply directories.
+	
+	- Each package in Python is a directory which MUST contain a special file called __init__.py. This file can be empty, and it indicates that the directory it contains is a Python package, so it can be imported the same way a module can be imported.
+	- The __init__.py file can also decide which modules the package exports as the API, while keeping other modules internal, by overriding the __all__ variable, like so:
+		__init__.py:	
+		__all__ = ["bar"]
+	- Packages are a way of structuring Python’s module namespace by using “dotted module names”. For example, the module name A.B designates a submodule named B in a package named A. Just like the use of modules saves the authors of different modules from having to worry about each other’s global variable names, the use of dotted module names saves the authors of multi-module packages like NumPy or the Python Imaging Library from having to worry about each other’s module names.
+	
+30. Map: Built-in function:
+	map() is a function that takes in two arguments: a function and a sequence iterable. 
+	In the form: map(function, sequence)
+	def fahrenheit(T):
+	    return ((float(9)/5)*T + 32)
+	temp = [0, 22.5, 40,100]
+	> map(fahrenheit, temp)
+	
+	- map() can be applied to more than one iterable. The iterables have to have the same length, else extra elements get associated with None.
+		a = [('1','2','3'),'a','b','c']
+		b = (('1','2'),'d','e','f')
+		> map(lambda b,a:b+a, b, a)
+		[('1', '2', '1', '2', '3'), 'da', 'eb', 'fc']
+
+	> def find_primefactors(n):
+	    #find all the odd number factors for the number n, as even factors cannot be prime factors
+	    lst=[]
+	    if n%2 == 0: lst.append(2)
+	    lst.extend(filter(lambda x: prime_check(x) and n%x == 0, xrange(3, n/2+1, 2)))
+	    return lst	
+	
+	> map(lambda x: x if checkprime(x) and n%x==0 else None, xrange(3, n/2+1, 2))
+
+	(ME)- Map applies to applying functions to individual elements in iterable objects. Or applying functions to relative elements based on index position across multiple objects of same lengths.
+	
+	>def word_lengths(phrase):
+	    return map(lambda x: len(x), phrase.split(' ')) 
+	    pass
+
+31. Reduce: Built-in function:
+	The function reduce(function, sequence) continually applies the function to the sequence. It then returns a single value.
+	At first the first two elements of seq will be applied to function, i.e. func(s1,s2)
+	The list on which reduce() works looks now like this: [ function(s1, s2), s3, ... , sn ]
+	It continues like this until just one element is left and return this element as the result of reduce()
+	(ME)- Reduce applies to applying functions over elements with in an object like list etc. Not possibel to apply over multiple different objects.
+	
+	>def digits_to_num(digits):
+	    print reduce(lambda x,y: (x*10)+y, digits)
+	    pass
+	digits_to_num([3,4,3,2,1])
+	word_lengths('How long are the words in this phrase')
+	
+32. filter: Built-in function:
+	- The function filter(function, list) offers a convenient way to filter out all the elements of an iterable, for which the function returns True.
+	- The function arg needs to return a Boolean value (either True or False). 
+	- This function will be applied to every element of the iterable. Only if the function returns True, the element of the iterable be included in the result.
+	eg: filter(lambda x: x%2==0,lst)
+
+  *** map, reduce, filter can Use Function, Iterate in loop over iterable and ability to return as list.
+	
+	def filter_words(word_list, letter):
+	    return filter(lambda x: x[0]==letter, word_list)
+	    pass
+	l = ['hello','are','cat','dog','ham','hi','go','to','heart']
+	filter_words(l,'h')
+
+33. zip: 
+	- Returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables. 
+	- The iterator stops when the shortest input iterable is exhausted. With a single iterable argument, it returns an iterator of 1-tuples. With no arguments, it returns an empty iterator.
+	- zip() should only be used with unequal length inputs when you don’t care about trailing, unmatched values from the longer iterables.
+	
+	> def concatenate(L1, L2, connector):
+    		#return map(lambda L1,L2: L1+connector+L2, L1, L2)
+    		return [x + connector + y for x,y in zip(L1,L2)]
+    		pass
+    	concatenate(['A','B'],['a','b'],'-')
+    	
+34. enumerate():
+	Enumerate allows you to keep a count as you iterate through an object. It does this by returning a tuple in the form (count,element).
+	It is a generator and returns a Function object.
+	- Can be used if you want to print index, sount etc
+	for count,item in enumerate(lst):
+	    if count >= 2:
+	        break
+	    else:
+        print item
+	
+	>def d_list(L):
+	    return dict(map(lambda x: x[::-1], enumerate(L))) #return dict(map(lambda x: reversed(x), enumerate(L)))
+	    pass
+	d_list(['a','b','c'])
+	
+	>def count_match_index(L):
+	    #reduce(lambda x,y: x+y, )
+	    return len(filter(lambda x: x[0]==x[1], enumerate(L)))
+	    pass
+	 count_match_index([0,2,2,1,5,5,6,10])	
+	
+35. all() and any():
+	They are built-in functions in Python that allow us to conveniently check for boolean matching in an iterable. 
+	- all() will return True if all elements in an iterable are True.
+	- any() will return True if any of the elements in the iterable are True.
+
+36. complex():
+	complex(1,2)
+	complex('3+7j')
+
+37. Decorators:
+	Decorators can be thought of as functions which modify the functionality of another function. They help to make your code shorter and more "Pythonic".
+	- Remember that in Python everything is an object. That means functions are objects which can be assigned labels and passed into other functions.
+	def hello(name='Jose'):
+	    return 'Hello '+name
+	    
+	- Assign a label to the function. Note that e are not using parentheses here because we are not calling the function hello, instead we are just putting it into the greet variable.
+	>greet = hello #
+	>greet
+		<function __main__.hello>
+	>greet()
+		'Hello Jose'
+
+  - Returning Functions:
+  	- In the if/else clause we are returning greet and welcome, not greet() and welcome().
+	- This is because when you put a pair of parentheses after it, the function gets executed; whereas if you don’t put parenthesis after it, then it can be passed around and can be assigned to other variables without executing it.
+
+		def hello(name='Jose'):
+		    def greet():
+		        return '\t This is inside the greet() function'
+		    def welcome():
+		        return "\t This is inside the welcome() function"
+		   
+		    if name == 'Jose':
+		        return greet
+		    else:
+        	return welcome
+        	
+   - Functions as Arguments:
+   	def hello():
+	    return 'Hi Jose!'
+	def other(func):
+	    print 'Other code would go here'
+	    print func()
+	> other(hello)
+
+   - Creating a Decorator:
+   	def decorator_fn(funct):
+	    def wrap():
+	        print 'Code before executing the function'
+	        funct()
+	        print 'Code after executing the function'
+	    return wrap
+	
+	def func_abc():
+	    print 'Function needs decorator'
+	    
+	> func_abc = decorator_fn(func_abc)
+	> func_abc()
+		Code before executing the function
+		Function needs decorator
+		Code after executing the function
+
+  >>> Now lets understand how we can rewrite this code using the @ symbol, which is what Python uses for Decorators:
+	@decorator_fn
+	def func_test():
+   	 print 'Test getting decorator'
+	> func_test()
+		Code before executing the function
+		Test getting decorator
+		Code after executing the function
+		
+38. Iterators and Generators:
+   - All iterators can only be iterated over once, not just those produced by generator functions.
+   - But, iterables can be iterated once multiple times.
+		call iter() on any iterable object and try to iterate over the result more than once, it fails.
+		a=iter('vinod')  
+		>next(a) #will fail after iterating once
+		
+   - Generators are Iterators that allow us to generate as we go along, instead of holding everything in memory
+	   -next() and iter() built-in functions:
+	   	def simple_gen():
+		    for x in range(3):
+	        	yield x
+	   
+	   	# Assign simple_gen 
+		> g = simple_gen()
+		> print next(g)
+
+     a='vinod'	# a is an iterable
+     b=iter(a)	# b is an iterator
+     for i in a:	#multiple executions of this function prints the elements over and over again
+     	print i		
+     for i in b:	#First iteratoin exhausts all elements, second iteratoin onwards does not return anything. For loop prevents error at the end.
+     	print b		
+	
+   - YIELD statement is used to build generator functions.
+	- In most aspects, a generator function will appear very similar to a normal function. The main difference is when a generator function is compiled they become an object that support an iteration protocol. That means when they are called in your code the don't actually return a value and then exit, the generator functions will automatically suspend and resume their execution and state around the last point of value generation. The main advantage here is that instead of having to compute an entire series of values upfront and the generator functions can be suspended, this feature is known as state suspension.
+	- Generators are best for calculating large sets of results (particularly in calculations that involve loops themselves) in cases where we don’t want to allocate the memory for all of the results at the same time.
+
+		>>> def myGenerator():
+		...     yield 'These'
+		...     yield 'words'
+		...     yield 'come'
+		...     yield 'one'
+		...     yield 'at'
+		...     yield 'a'
+		...     yield 'time'
+
+	>>> myGeneratorInstance = myGenerator()
+	>>> next(myGeneratorInstance)
+	These
+	>>> next(myGeneratorInstance)
+	words
+   
+   - string and xrange() are an Iterable(we can loop throug it in for loop) but not an Iterator, so cannot use next() function.
+   	You can make then iterators using the iter() function:
+   	> s='vinod'
+   	> is = iter(s)
+	print next(is)
+	> y = iter(xrange(10))
+	print next(y)
+	
+   - GENERATOR EXPRESSIONS: Similar to list comprehensions, which return a full list with elements consuming memory.
+   	p = (x for x in range(6))
+   	> p
+   		<generator object <genexpr> at 0x0000000005FB60D8>
+   	> next(p)
+   		0
+   	> next(p)
+   		1
+   	> next(x for x in range(6))
+   		0 # Always returns 0 only, as we are executing the generator function, generator object is created and the first value is returned.
+   		  # When the command is run again, the generator is again created, instead of iterating the next element.
+   	
+   - Observe that a generator object is generated once, but its code is not run all at once. Only calls to next actually execute (part of) the code. Execution of the code in a generator stops once a yield statement has been reached, upon which it returns a value. The next call to next then causes execution to continue in the state in which the generator was left after the last yield. This is a fundamental difference with regular functions: those always start execution at the "top" and discard their state upon returning a value.
+
+	There are more things to be said about this subject. It is e.g. possible to send data back into a generator (reference). But that is something I suggest you do not look into until you understand the basic concept of a generator.
+
+	Now you may ask: why use generators? There are a couple of good reasons:
+
+	Certain concepts can be described much more succinctly using generators.
+	- Instead of creating a function which returns a list of values, one can write a generator which generates the values on the fly. This means that no list needs to be constructed, meaning that the resulting code is more memory efficient. In this way one can even describe data streams which would simply be too large to fit in memory.
+	- Generators allow for a natural way to describe infinite streams. Consider for example the Fibonacci numbers
+	def fib():
+	    a,b=0,1
+	    while True:
+	        a,b=b,a+b
+	        yield a
+	> n=fib()
+	> next(n)
+
+39. Collections Module:
+	The collections module is a built-in module that implements specialized container data types providing alternatives to Python’s general purpose built-in containers. We've already gone over the basics: dict, list, set, and tuple
+
+	Counter: from collections import Counter
+		Counter is a dict subclass which helps count hash-able objects. Inside of it elements are stored as dictionary KEYS and the COUNTS of the objects are stored as the value.
+		s = 'How many times does each word show up in this sentence word times each word'
+		words = s.split()
+		x = Counter(words)
+		Out[42]: Counter({1: 3, 2: 1, 3: 1, 4: 2, 5: 4, 7: 5, 8: 1, 22: 1, 67: 1, 87: 1})
+	> x.most_common(2) #returns 2 most common occurance sets
+	> x.most_common()[-1:] # LEAST Occurace#returns last occurance in the list of dictionary
+	
+	defaultdict: from collections import defaultdict
+		defaultdict is a dictionary like object which provides all methods provided by dictionary but takes first argument (default_factory) as default data type for the dictionary
+		d  = defaultdict(object)
+		d[1]	#just reference the new dictionary key, it gets created with defualt object
+		<object at 0x3c3c830>
+		
+		d = defaultdict(lambda: 0)	#assigning default value 0, for a new key referenced 
+		d[2]
+		d[10]
+		defaultdict(<function __main__.<lambda>>, {2: 1, 10: 1})
+		
+	OrderedDict: from collections import OrderedDict
+		An OrderedDict is a dictionary subclass that remembers the order in which its contents are added.
+		A regular dict looks at its contents when testing for equality. An OrderedDict also considers the order the items were added
+		d1 = collections.OrderedDict()
+		d1['a'] = 'A'
+		d1['b'] = 'B'
+		
+		Note: If you want to be able to read from a dictionary in a perticular sequence order, without using ordered dict collection.
+			Then assign the keys as incrementing numeric values. eg: dic {1:'a', 2:'vind', 3:'hello'}
+		
+	namedtuple: from collections import namedtuple
+		- namedtuples as a very quick way of creating a new object/class type with some attribute fields
+		
+		A namedtuple assigns names, as well as the numerical index, to each member. The standard tuple uses numerical indexes to access its members.
+		Dog = namedtuple('Dog','age breed name')
+		sam = Dog(age=2,breed='Lab',name='Sammy')
+		frank = Dog(age=2,breed='Shepard',name="Frankie")
+
+40. Datetime Module:
+	We can create a time-stamp by specifying datetime.time(hour,minute,second,microsecond)
+	datetime (as you might suspect) also allows us to work with date timestamps. Calendar date values are represented with the date class
+	arithmatic is also possible on the dates.
+
+41. Python Debbuger:
+	import pdb
+	pdb.set_trace() #Set this trace in the code where you think the error may be, then it will provide ain interactive debugging environment.
+	Very powerful python debugger module
+
+42. Timing Your COde:
+	import timeit
+	timeit.timeit(stmt='pass', setup='pass', timer=<default timer>, number=1000000)
+	timeit.repeat(stmt='pass', setup='pass', timer=<default timer>, repeat=3, number=1000000)
+	
+	- used if not using Jupyter Notebook, where you can use magic function %timeit. iPython will provide better stats.
+		#regular format
+	> timeit.timeit('-'.join(str(x) for x in range(10)), number=10000)
+		0.00019920644035664736
+		
+		#iPython format
+	> %timeit ('-'.join(str(x) for x in range(10)))
+		100000 loops, best of 3: 3.14 µs per loop
+	> %timeit ('-'.join([str(x) for x in range(10)]))
+
+	> You can directly call the function in timeit:
+		%timeit sum(a,b)
+
+	#output converted to list, str function converts every list element to string with map operation. Joins the results with \n in between.
+	> print '\n'.join(map(str, list(output)))
+
+43. Regular Expressions
+	Regular expressions are text matching patterns described with a formal syntax.
+	- search = search for Patterns in Text #returns true or false
+		line = "Cats are smarter than dogs"
+		serchObj = re.search( r'(.*) are (.*?) .*', line)
+		serchObj.group()
+		serchObj.group(1)	#Cats
+		serchObj.group(2)	#smarter
+	- match = re.search(pattern,  text) # If search is successful, This will return an object Match, which is more than a Boolean. Else will return NoneType
+		type(match)	
+		
+		Python offers two different primitive operations based on regular expressions: 
+		MATCH checks for a match only at the beginning of the string.
+		SEARCH checks for a match anywhere in the string (this is what Perl does by default).
+	- sub = Search and Replace
+		This method replaces all occurrences of the RE pattern in string with repl, substituting all occurrences unless max provided
+		re.sub(pattern, repl, string, max=0)
+		phone = "2004-959-559 # This is Phone Number"
+		num = re.sub(r'#.*$', "", phone) 	# replace string after # till end of line with blank
+		print "Phone Num : ", num
+		
+	- Split with regular expressions
+		re.split(split_term,phrase)	#
+	- Finding all instances of a pattern:
+		# Returns a list of all matches
+		re.findall('match','test phrase match is in middle')
+	- Pattern re Syntax:
+		We can use metacharacters along with re to find specific types of patterns
+	- Repetition Syntax
+		There are five ways to express repetition in a pattern:
+		1.) A pattern followed by the meta-character * is repeated zero or more times. 
+		2.) Replace the * with + and the pattern must appear at least once. 
+		3.) Using ? means the pattern appears zero or one time. 
+		4.) For a specific number of occurrences, use {m} after the pattern, where m is replaced with the number of times the pattern should repeat. 
+		5.) Use {m,n} where m is the minimum number of repetitions and n is the maximum. Leaving out n ({m,}) means the value appears at least m times, with no maximum.
+	
+	- Character Sets
+		Character sets are used when you wish to match any one of a group of characters at a point in the input. Brackets are used to construct character set inputs. For example: the input [ab] searches for occurrences of either a or 
+		1. '[sd]',    # either s or d
+		2. 's[sd]+'   # s followed by one or more s or d
+		3. text = 'mariangi' 	pattern = '([avm]){2}'	#returns only the char among a,v,m which occurs 2 times in the text
+		4. text = 'mariangi' 	pattern = '[avm]{2}'	#returns if groups of 2 char from a,v,m occurs in the text.
+	- Exclusion
+		We can use ^ to exclude terms by incorporating it into the bracket syntax notation. 
+		For example: [^...] will match any single character not in the brackets
+		re.findall('[^!.? ]+',test_phrase)	#check for matches that are not a !,.,?, or space
+	
+	- Character Ranges
+		As character sets grow larger, typing every character that should (or should not) match could become very tedious. A more compact format using character ranges lets you define a character set to include all of the contiguous characters between a start and stop point. The format used is [start-end].
+		[A-Za-z0-9]
+	- Escape Codes
+		You can use special escape codes to find specific types of patterns in your data, such as digits, non-digits, whitespace, and more. For example:
+		Code	Meaning
+		\d	a digit
+		\D	a non-digit
+		\s	whitespace (tab, space, newline, etc.)
+		\S	non-whitespace	
+		\w	alphanumeric
+		\W	non-alphanumeric
+		test_phrase = 'This is a string with some num\bers 1233 and a symbol #hashtag'
+		test_patterns=[ r'\d+',r'\D+',r'\s+',r'\S+',r'\w+','\W+']
+
+44. StringIO:
+	The StringIO module implements an in-memory file like object. 
+	This object can then be used as input or output to most functions that would expect a standard file object.
+	import StringIO
+	StringIO.StringIO('phrase string')
+	f.read(), f.write(), f.seek()
+	
+45. Advanced Numbers:
+	hex(), bin(), abs(), pow(2,3), round(9.5), round(9.7,2)
+
+46. Advanced String:
+	str.upper().center(20,'-')
+	str.isalnum() #checks of alpha numeric and returns boolean
+	str.isalpha()	#checks is alpha char retirn boolesn
+	str.isupper()
+	str.split('o') #splits at every occurance of 'o'
+	str.partition('o') #splits only on first occurance and returns first part, seperator and last part
+	
+47. Advanced Sets: This data structure is extremely useful and is underutilized by beginners, so try to keep it in mind!
+	Remember a set won't take duplicate elements
+	s = set()
+	s.add(1) #add elements to a set. Remember a set won't take duplicate elements
+	s.clear() #removes all elements from the set
+	gc = s	#changes to 'gc' or 's' will affect the other
+	sc = s.copy() #returns a copy of the set. So changes to the original don't effect the copy.
+	set1.difference(set2) #difference returns the difference of two or more sets
+	set1.difference_update(set2) #the method returns set1 after removing elements found in set2
+	s.discard(2) #Removes an element from a set if it is a member
+	s1.intersection(s2) #Returns the intersection of two or more sets as a new set
+	s1.intersection_update(s2) #will update a set with the intersection of itself and another.
+	s1.isdisjoint(s2) #This method will return True if two sets have a null intersection.
+	s1.issubset(s2) #This method reports True if another set contains this set.
+	s2.issuperset(s1) #This method will report whether this set contains another set.
+	s1.symmetric_difference(s2) #returna a set with all elements that are only in each of the sets.
+	s1.union(s2) #Returns the union of two sets 
+	s1.update(s2) #Update a set with the union of itself and others.
+	
+48. Dictionary Comprehension:
+	d1 = {x:x**2 for x in range(10)}
+	d2 = {k:v**2 for k,v in zip(['a','b','c'],range(1,4))}
+
+49. ipywidgets: Creating dashboard-type GUI with iPython widgets!
+	- This type of GUI is best suited for creating dashboards for data/business analysis situations.
+	The interact function (ipywidgets.interact) automatically creates user interface (UI) controls for exploring code and data interactively.
+	- The best GUI depends on what you want to do.
+	* interact:
+		interact auto-generates UI controls for function arguments, and then calls the function with those arguments when you manipulate the controls interactively.
+		- KEYWORD ARGUMENT							WIDGET
+		- True or False								Checkbox
+		- 'Hi there'								Text
+		- value or (min,max) or (min,max,step) if integers are passed		IntSlider
+		- value or (min,max) or (min,max,step) if floats are passed		FloatSlider
+		- ('orange','apple') or {'one':1,'two':2}				Dropdown
+		
+		- interact can also be used as a decorator. This allows you to define a function and interact with it in a single shot.
+		
+			> def f(Age, Male, Female, Name): return (Age, Male, Female, Name)
+			> interact(f, Age=30, Male=True, Female=False, Name='Koma');  #Semicolon here just prevents an out cell from showing up
+		
+		- Fixing arguments using fixed. When we call interact, we pass fixed(20) it will hold it fixed at a value of 20.
+			> interact(h, p=5, q=fixed(20));
+		
+		- Widget abbreviations: 
+			When you pass an integer-valued keyword argument of 10 (x=10) to interact, it generates an integer-valued slider control with a range of  [-10,+3×10][-10,+3×10] . In this case, 10 is an abbreviation for an actual slider widget:
+		
+			> interact(f, x=widgets.IntSlider(min=-10,max=100,step=5,value=10));
+		
+		- Initial value : For both integer and float-valued sliders, you can pick the initial value of the widget by passing a default keyword argument to the 
+		underlying Python function. Here we set the initial value of a float slider to 5.5.
+			> @interact(x=(0.0,20.0,0.5))
+			> def h(x=5.5):	#setting initial default value
+			      return x
+		
+		- Using dictionary to display keys and pass underlying value to python function:
+			> interact(f, x={'one': 10, 'two': 20});
+		
+		- Python 2 : Using function annotations with interact:
+			> from IPython.utils.py3compat import annotate
+			  @annotate(x=True)
+			  def f(x):
+			  return x
+			> interact(f);	#because the widget abbreviation has already been defined, you can call interact with a single argument.
+		
+	* interactive:
+		- In addition to interact, IPython provides another function, interactive, that is useful when you want to reuse the widgets that are produced or access the data that is bound to the UI controls.
+		- Unlike interact, interactive returns a Widget instance rather than immediately displaying the widget.
+		> def f(a, b):  return a+b
+		> w = interactive(f, a=10, b=20)
+		> w.children
+			(IntSlider(value=10, description=u'a', max=30, min=-10),
+			 IntSlider(value=20, description=u'b', max=60, min=-20),
+			 Output())
+		> from IPython.display import display
+		> display(w)	#To actually display the widgets
+		
+		- At this point, the UI controls work just like they would if interact had been used. You can manipulate them interactively and the function will be called. However, the widget instance returned by interactive also give you access to the current keyword arguments and return value of the underlying Python function.
+		> w.kwargs
+		{'a': 16, 'b': 22}
+		> w.result
+		38
+
+50. Widgets Basics:
+	- Widgets are eventful python objects that have a representation in the browser, often as a control like a slider, text-box, etc.
+	To use the widget framework, you need to import ipywidgets.
+	You can use widgets to build interactive GUIs for your notebooks.
+	You can also use widgets to synchronize stateful and stateless information between Python and JavaScript.
+	- repr
+		Widgets have their own display repr which allows them to be displayed using IPython's display framework.
+		> IntSlider()
+		> FloatText()
+		> FloatSlider()
+		
+	- display()
+		You can also explicitly display the widget using display
+		>from IPython.display import display
+		>w = IntSlider()
+		>display(w)
+	- Multiple display() calls:
+		If you display the same widget twice, the displayed instances in the front-end will remain in sync with each other
+	- Closing widgets
+		You can close a widget by calling its close() method.
+		>display(w)
+		>w.close()
+	- Widget properties:
+		To read the value of a widget, you can query its value property.
+		> w.value
+		Similarly, to set a widget's value, you can set its value property.
+		> w.value = 100
+	- Setting the initial values:
+		Text(value='Hello World!', disabled=True)
+	- Linking two similar widgets:
+		If you need to display the same value two different ways, you'll have to use two different widgets. Instead of attempting to manually synchronize the values of the two widgets, you can use the traitlet link function to link two properties together
+		> from traitlets import link
+		> a = FloatText()
+		> b = FloatSlider()
+		> display(a,b)
+		> mylink = link((a, 'value'), (b, 'value'))	#where first part is source, second part is target
+	- Unlinking widgets:
+		> mylink.unlink()
+
+51. Widget Events:
+	- The Button is not used to represent a data type. Instead the button widget is used to handle mouse clicks. The on_click method of the Button can be used to register function to be called when the button is clicked
+	- Since button clicks are stateless, they are transmitted from the front-end to the back-end using custom messages.
+	> button = widgets.Button(description='Bang !')
+	> def bang_h(a):
+	>    print ("Kom Oh!")
+	>    button.on_click(bang_h)
+	
+	- The Text widget also has a special on_submit event. The on_submit event fires when the user hits return.
+		text = widgets.Text()
+		display(text)		
+		def handle_submit(sender):
+		    print(text.value)		
+		text.on_submit(handle_submit)
+	
+	- Traitlet events:
+		Widget properties are IPython traitlets and traitlets are eventful. 
+		To handle changes, the on_trait_change method of the widget can be used to register a callback. 
+		> slide = widgets.IntSlider()
+		> display(slide)
+		> def prin_s(a):  print ('komi')
+		> slide.observe(prin_s)
+   * Linking Widgets
+	- Linking traitlets attributes from the server side.
+		- link and dlink functions from the traitlets module.
+		# Create Caption
+		caption = widgets.Label(value = 'Changes in source values are reflected in target1')
+		
+		# Create Sliders # Target adjusts to Source value and viceversa
+		source = widgets.IntSlider(description='Source')
+		target1 = widgets.IntSlider(description='Target 1')
+		
+		# Use dlink # Target adjusts to Source value, but not viceversa
+		dl = traitlets.dlink((source, 'value'), (target1, 'value'))
+		display(caption, source, target1)
+
+	- Linking widgets attributes from the client side:
+		When synchronizing traitlets attributes, you may experience a lag because of the latency due to the roundtrip to the server side. You can also directly link widget attributes in the browser using the link widgets, in either a unidirectional or a bidirectional fashion.
+		# NO LAG VERSION
+		caption = widgets.Label(value = 'The values of range1 and range2 are synchronized')
+		
+		range1 = widgets.IntSlider(description='Range 1')
+		range2 =  widgets.IntSlider(description='Range 2')
+		
+		l = widgets.jslink((range1, 'value'), (range2, 'value'))
+		display(caption, range1, range2)
+
+52. Widget List:
+	Numeric Widgets
+	Boolean Widgets
+	String Widgets
+	Selection Widgets
+
+
+
+*******************************************************************************************************************************************
+*******************************************************************************************************************************************
+
+PYTHON for Data Structures, Algorithms and Interviews:
+=======================================================
+Note Books:
+http://nbviewer.jupyter.org/github/jmportilla/Python-for-Algorithms--Data-Structures--and-Interviews/tree/master/
+https://github.com/jmportilla/Python-for-Algorithms--Data-Structures--and-Interviews/tree/master/
+
+Algorithm Analysis and Big-O
+-----------------------------
+Algorithm : Procedure to solve a problem
+
+1. How do we Analyse and Compare Algorithms each other?
+	- If there are multiple Algorithms to a problem, we need a way to identify which one is better. We can Objectively compare the Algorithms:
+	a. Compare the SPACE they take to run. Space Complexity.
+	b. Compare the TIME they take to run. Time Complexity.
+		- We cannot Just use the time as objective measurement, as for a Large 'n' the runtime can be too huge to compare and also depends on Hardware.
+	* So we need something that Objectively Compares the Efficiency of the two Algorithms.
+
+Notation is going to help compare algorithms OBJECTIVELY on how much TIME they take to run and show much SPACE they consume.
+2. Big-O :
+	- Big-O notation describes how quickly runtime will grow relative to the input as the input get arbitrarily large.
+		eg: we dont want to compare 10sec with 12 sec, we want to know how quickly the run time increases with input.
+	Big-O	Name
+	1	Constant
+	log(n)	Logarithmic
+	n	Linear
+	nlog(n)	Log Linear
+	n^2	Quadratic
+	n^3	Cubic
+	2^n	Exponential
+	- For small 'n' value, all above have similar run times. As 'n' increases the plot chnages widely.
+	
+	> Contant BigO:
+		def fc1(lst):
+		    print lst[0]
+
+	> linear BigO:
+		def fn1(n):
+		    #linear n
+		    for i in xrange(n):
+		print i
+
+		def test(lst):
+			# Linear 2n : As n increases to infinity we can ignore the constant, here we can ignore 2 as n goes to infinity.
+		    for i in lst:
+			print i
+		    for i in lst:
+		print i
+
+	> BigO Time Complexity: Quadratic O(n^2), Space Compelxity: Constant O(1)
+		def fn2(n):
+		    #quadratic
+		    for i in xrange(n+1):
+			for j in xrange(n+1):
+		    print i, j
+
+
+	> What is Time complexity of below? 	
+		x = n
+		while x > 0:
+		   y = 2 + 2
+		   x = x / 2
+		   
+		Ans: O(logn) and not O(n), as X is reduced by 2 every time, its like a Binary Search Tree or Divide and Conqure
+		
+	> Give the Big-O performance of the following code:	
+		for x in range(n):
+		   z = 2 + 2
+		for y in range(n):
+		   z = 2 + 2
+		for w in range(n):
+		   z = 2 + 2
+		Ans: O(n), it is calculated as O(n+n+n)=O(3n) where 3 becomes insignificant when n goes to Infinity. 
+	
+3. Insignificant terms drop out of Big-O notation.
+	For below we can represent in Big-O as O(1 +n/2 +1), as n goes to arbitrarily large, the constants become insignificant, so it is same as O(n) linear
+	 def comp(lst):
+	    '''
+	    This function prints the first item O(1)
+	    Then is prints the first 1/2 of the list O(n/2)
+	    Then prints a string 10 times O(10)
+	    '''
+	    print lst[0]
+
+	    midpoint = len(lst)/2
+
+	    for val in lst[:midpoint]: 
+		print val
+
+	    for x in range(10):
+		print 'number'
+	
+4. Best Case and Worst Case: Keep track of Both in Interview sessoin:
+	def matcher(lst,match):
+	    '''
+	    Given a list lst, return a boolean indicating if match item is in the list
+	    '''
+	    for item in lst:
+	        if item == match:
+	            return True
+	    return False
+
+	lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	
+	- The Best Case Big-O is Constant, when 1 is the input, as functoin finds the value in first location.
+	- The Worst Case Big-O is linear, when 10 is the input where function has to search through n elements to find the element.
+
+
+5. SPACE COMPLEXITY:
+	Many times we are also concerned with how much memory/space an algorithm uses. 
+	The notation of space complexity is the same, but instead of checking the time of operations, we check the size of the allocation of memory.
+  	- There can be tradeoffs between Time and Space Complexity.
+
+
+6. Big-O for Python Data Structures:
+
+	- Lists:
+		In Python lists act as dynamic arrays and support a number of common operations through methods called on them. The two most common operations performed on a list are indexing and assigning to an index position. These operations are both designed to be run in constant time, O(1).
+		- Built in functions are mostly more efficient, so try to use them when trying to build efficient code. Eg: when white boarding for Interview.
+		
+		- Start thinking about how to Index in Constant Time.
+		Operation	Big-O Efficiency Time Complexity
+		index []		O(1)	#select
+		index assignment	O(1)	#update
+		append			O(1)	#insert at end
+		pop()			O(1)	#delete at end
+		pop(i)			O(n)
+		insert(i,item)		O(n)	#inserts item in between the list after position i. If i>len(l) then appends to end of list.
+		del operator		O(n)
+		iteration		O(n)
+		contains (in)		O(n)	#search
+		get slice [x:y]		O(k)
+		del slice		O(n)
+		set slice		O(n+k)
+		reverse			O(n)	
+		concatenate		O(k)
+		sort			O(n log n)
+		multiply		O(nk)
+
+ 	- Dictionaries:
+		- Dictionaries in Python are an implementation of a hash table. They operate with keys and values, for example:
+		d = {'k1':1,'k2':2}
+		
+		- Getting and setting items in a dictionary are O(1). Hash tables are designed with efficiency in mind,
+		Operation	Big-O Efficiency
+		copy		O(n)
+		get item	O(1)	#select
+		set item	O(1)	#update\insert
+		delete item	O(1)	#delete
+		contains (in)	O(1)	#search
+		iteration	O(n)
+	
+#Big-O compare Dictionary and list search inside a loop
+	# below is O(N)
+    for i in arr2:  #O(n) operation
+        if i in dic:  #O(1) operation, as 'dic' is dictionary with constant O(1) for every search for i
+            dic[i] += 1
+        else:
+            dic[i] = 1	
+	
+	# below is O(N^2)
+    for i in arr2:  #O(n) operation
+        if i in arr2:  #O(n) operation, as 'arr2' is array with time complexity O(n) for every single search for i
+            dic[i] += 1
+        else:
+            dic[i] = 1	
+
+
+7. ARRAY SEQUENCE:
+	- Python has 3 main Array sequences: Lists, Tuples, Sets : All of them support indexing
+	
+	Low Level Computer Architecture:
+	- Memory of a computer is stored in bits, typical unit is BYTE which is 8 bits.
+	- Every Byte is associate with unique address. Representing Arrays of sequential Bytes on low level computer memory.
+	- The memory is designed (theoritically) such that any Byte of memory can be accessed efficiently based on its address, like RAM. Individual byte of memory can be stored or retrieved in O(1) time.
+	- The programming languages common task is to keep track of the association between Identifier and the memory address.
+	
+	** Array: A represntation where a group of related variables are stored one after another in a contiguous portion on the computers memory.
+	eg: String is stored as an ordered sequence of individual characters.
+	- Python internally represents every Unicode character in 2 Bytes (16 bits).
+	
+	eg: string 'SAMPLE' would be stored in 12 consecutive bytes represented as an Array of 6 characters. 
+	Each location in the Array can be called a Cell.
+	An Integer index can be used to describe the location of the Cell.
+	
+	Array Properties:
+		- Each cell of array MUST USE SAME NUMBER OF BYTES. This causes any Cell to be accessed in constant time based on its index, using the below Algorithm to calculate the address of any Cell in the Array.
+		- The appropriate memory address can be calculated as: Start+(CellSize)(Index 0 to n)
+		Start: The memory address at which an Array starts
+		CellSize: The number of Bytes per element\cell
+		Index: The required Index being accessed. 
+		
+	Higher Level Abstraction:
+		- Does not consider bits and bytes.
+		- For real world discussions, eg: Considers 'SAMPLE' string and INDEX values.
+
+	In Python, we can use use Lists as Arrays to store set of names. But as names can be of different lengths the number of bytes occupied will differ in every cell, which is not an Array property. Either we should make every every cell size same as largest string, which wastes memory, or use Referential Arrays which store Addresses of the Elements which have constant cell size, instead of Elements itself.
+	
+	REFERENTIAL Arrays:
+		Array of 'Object references' where the Index refers to the address location of the objects\elements instead of storing the elements directly. This way each cell of the List storing the memory address occupies Fixed number of Bytes\Bits, representing an Array structure.
+		This way Python supports O(1) for Search\Update on Indexes.
+	
+	 - A single list instance can include multiple references to same object. Same Object can be referenced in multiple lists. Slice of List will result in new list, which also refres to the same objects.
+	 - When we reassign an Index to a different element, what actually happens is the Index now points to a different object but the previous element exists in memory.
+	 primes = [2,3,5,7]
+	 - newle = list(primes) # Does a Shallow Copy, new list refers to same elements.
+	 - Deep copy from copy module can be used to create a new list with new elements altogether.
+	 - [0]*8 # creates a list with 8 0's, where all indexes refer to same element 0.
+	 - primes.extend(extras) #adds the references to the objects to the list and not the elements in list extras.
+
+8. DYNAMIC Array:
+	Dont need to specify how large a list is going to be before hand.
+	Python Lists, are an optimized implementatoin of Dynamic Arrays.
+	- Python lists allocates memory in chunks, such that the list capacity is greater than the current elements in list and it does not need to keep increasing the size for every new element, but increases at some calculated intervals.
+	
+	- Implementing Dynamic Array Theory:
+		A=[0..n-1] #for n elements
+		When last element is added
+		B[i] = A[i] 	#Create new array B with larger size and which references the same elements as A
+		A = B 	#Call A the new bigger array / Resetting A to the new array B
+		* At this stage the previous memory used by A can be used again. But both B and A exist with the new increased lengths.
+	- Common rule is for the new list should have twice the capacity of the existing array that is filled. 
+	
+	- AMORTIZATION: Is an Algorithimic design pattern.
+		Even though the concept of increasing the size of array at intervals appears to be sloww, it actually is efficient and the Amortized Cost of increasing the size of array is Constant O(1).
+
+9. STACKS, QUEUES, DEQUES : 	These are Linear Structures, they differ from Arrays by how they add and remove items.
+	
+	STACKS: Ordered collection of items where the addition and removal of existing items happens at the same end called 'Top', other end is 'Base'.
+		- LIFO
+		- Can be used to reverse the order of items.
+		- stack(), push, pop, peek, isEmpty, size
+	
+	QUEUES: Ordered collection of items where the addition of items happens at one end called 'Rear' and removal of existing items happens at other end 'Front'.
+		- FIFO
+		- queue(), enqueue, dequeue, isEmpty, size
+		
+	DEQUE: Double ended Queue, with ordered collection of items similar to the Queue. It has two ends 'Front' and 'Rear' and items remain positioned in collection.
+		- It has unrestrictive nature of adding and removing items. New Items or Existing can be added either at 'Front' or at the 'Rear'.
+		- Deques have characteristics of Stacks and Queues, but do not require LIFO or FIFO Orderings. 
+			It is up to you how to make CONSISTENT use of the addition and removal operations.
+		- Deque(), addFront, addRear, removeFront, removeRear, isEmpty, size
+	
+10. Linked List:
+	Singly Linked List:
+		- Is a collection of Nodes that collectively form linear sequence. Where each Node has a reference to an object that is element of the sequence, as well as reference to the next node of the list. 
+		- Each Node is represented as a unique object. ??Singly linked contains an ordered list of items.??
+		- The first and last node of the linked list are called Head and Tail of the list respectively. 
+		  The Tail node has reference to an element of the list and NONE as the next reference node.
+		- Process of going through the nodes is called Traversing the linked lists. Traversal can be done only in ONE direction for singly linked list.
+		- Because the next reference of the node can be viewed as Link or Pointer to another node, Traversing is also called Link Hopping or Pointer Hopping.
+		* Linked List does not have a predetermined list size, it uses spaces proportionately to current number of elements.
+		* Linked list has CONSTANT TIME INSERTIONS and DELETIONS at any position. Arrays require O(n) Time.
+		* Can continue to expand without having to specifying their size ahead of time. Arrays required Amortization concept for Dynamic arrays.
+		* CON's: To Access elements of linked list we need O(k) Time to go from Head to the k'th element.
+		
+		a. Insert element to begining of the linked list, add new node, refer to start node of current linked list and point head to the new node.
+		b. Insert element to tail of the linked list, add new node with reference to NONE, change the reference of current tail node to new node.		
+		c. Remove element from begining of linked list, point head to second node, remove reference from first node to second node, then delete the node.
+		d Remove element from tail of the linked list is Not Possible:
+			We should be able to point the reference of the last but one node to NONE, but in order to do so we cannot traverse from tail to previous node and its a singly linked list. For other three operations above we just needed the Head or Tail node to be modified, so it was posssible.
+		
+	Doubly Linked List:
+		- It is a collectin of Nodes, in which wach node keeps an explicit reference to the node before it and the node after it.
+		- There are Dummy (Sentinel\guards) nodes:  Header and Trailer Node at the beginning and end of a doubly list.
+			When a node is added at the front of the sequence, we add it inbetween the Header and the node after the header.
+		* This has CONSTANT TIme UPDATES along with INSERTIONS and DELETIONS.
+		- We use the term 'next' to refer the node that follows and 'prev' to refer to the node that preceds it.
+		- All Insertions to doubly linked list takes place between a pair of existing nodes. We just need to change the next pointer and previous pointer to accomodate the new node.
+		- To Delete a node, just need to link the two neighbours nodes of the node we want deleted, then the system will reclaim the disconnected node as it has no Sentinel nodes.
+	
+	Circular Linked List:
+		The 'next' reference from last node points to the first node. 
+	Circular Doubly Linked list :
+		The 'next' reference from last node points to the first node. And first node 'prev' reference points to the last node.
+	
+
+11. RECURSION:
+	- There are two instances of Recursion:
+	1. The first is when, Recursion is used as a technique where a function makes one or more calls to itself.
+	2. The second is when, Data structure uses smaller instances of the exact same type of data structure when it represents itself.
+	
+	Why Recursion?
+	- Recursion provides a powerful alternative for performing repetitions of tasks in which loop is not ideal.
+	- Recursion serves as a great tool for building out particular data structures.
+
+	* Factorial function written in Recusive manner is:
+		n! = n*(n-1)! 
+		Base case: if n=0 then n!=1
+		4! = 4*(4-1)!
+			= 4*3*(3-1)!
+				= 4*3*2*(2-1)!
+					= 4*3*2*1*(1-1)!
+						= 4*3*2*1*1  #as 0! = 1 , from our base case
+						
+	* When ever building a recursive function its very important to think about the BASE case, as your solution will need to return to the base case once all the recursive cases have been through.
+	
+	
+	
+12. Memoization:
+	- Is an optimizing technique in which the speed of the program is improved by storing\caching the results of an expensive function for an input value, such that the results can be reused instead of reexecutingthe function, if the function is later called for same input values.
+	There is trade off between space and time, additional space used results in time gained.
+	- Memoization and Recursion are sometimes called as Automatic Programming.
+	- Memoization is heavily used in compilers for functional programming languages.
+
+	
+	
