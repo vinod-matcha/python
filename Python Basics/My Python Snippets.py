@@ -142,8 +142,9 @@ def prime_check(n):
 n = 30
 filter(lambda i: prime_check(i), xrange(3, n/2+1, 2))
 
-
+############################################################################################
 #   Generate list of primes in an interval
+############################################################################################
 import math
 def list_primes(v_min, v_max):
     '''
@@ -160,8 +161,9 @@ def list_primes(v_min, v_max):
                 p_list.append(num)
     return p_list
 
-
+############################################################################################
 #   Check for a Palindrome without using reverse
+############################################################################################
 def palindrome(a):
     str_nospace=a.replace(' ','')
     cnt=len(str_nospace)-1
@@ -184,7 +186,9 @@ def palindrome(a):
     else:
         return 'false'
 
+############################################################################################
 # Check for Panagram:
+############################################################################################
 import string
 
 def ispangram(str1, alphabet=string.ascii_lowercase):
@@ -196,7 +200,9 @@ def ispangram(str1, alphabet=string.ascii_lowercase):
         return 'Is Pangram'
     pass
 
+############################################################################################
 # Check for Anagram for 2 strings: Ignore Spaces and capitals
+############################################################################################
 def anagram(s1,s2):
     a1=set(map(lambda x:x, s1))
     a2=set(map(lambda x:x, s2))
@@ -226,8 +232,9 @@ def anagram2(s1,s2):
         return False  
     pass
     
-    
+############################################################################################    
 # Function to convert list of 2 element tuples into a dictionary with validation
+############################################################################################
 def list_tup_to_dict(lst):
     dic={}
     l=[]
@@ -248,7 +255,9 @@ def list_tup_to_dict(lst):
 p=[('k4', 'v2'), ('k6', 'v1'), ('k2', 'v2'), ('k1', 'v1')]
 list_tup_to_dict(p)
 
+############################################################################################
 #Creating List of Tuples and Dictionary using the LIst and its index values.
+############################################################################################
 ls=[1,2,3,4,5,6,7,8,9]
 l=[]
 d={}
@@ -258,16 +267,19 @@ for i, item in enumerate(ls):
 dic.update(l)    
 print t
 
+############################################################################################
 # Creating a dictionary with input of list, using the indexes as values.
+############################################################################################
 def d_list(L):
     return dict(map(lambda x: x[::-1], enumerate(L)))
     pass
 d_list(['a','b','c'])
 
 
+############################################################################################
 # Comparing SETS if they are same, they will match if elements are same. 
 # SORT is not required to be applied before comparing. Also there is no SORT method for SET
-
+############################################################################################
 import string
 def check_p(str, ):
     az=set(string.ascii_lowercase)
@@ -280,8 +292,9 @@ def check_p(str, ):
 
 check_p("The quick brown fox jumps over the lazy dog")
 
+############################################################################################
 # Comparing LISTS if they are same, the same elements need to be sorted same order to match in lists
-
+############################################################################################
 import string
 def check_p(str, ):
     az=set(string.ascii_lowercase)
@@ -364,6 +377,7 @@ def fibonew(n):
 
 for a in fibonew(4):
     print a
+
 
 #Generate Fibonacci series to infinity using Generator Function
 # The generator encapsulates an infinite loop, but this isn't a problem because you only get each answer every time you ask for it.
